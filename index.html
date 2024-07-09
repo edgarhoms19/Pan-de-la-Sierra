@@ -68,7 +68,7 @@
 						<!-- Contact -->
 							 <article id="orders">
 								<h2 class="major">Comienza tu orden</h2>
-								<form method="post" action="#">
+								<form method="post" action="#" autocomplete="off" name="google-sheet">
 									
 										<h3 class="major">Table</h3>
 										<h4>Default</h4>
@@ -108,12 +108,7 @@
 														<td>29.99</td>
 													</tr>
 												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
+
 											</table>
 										</div>
 
@@ -128,14 +123,14 @@
 											<input type="tel" name="phone" id="phone" placeholder="123-456-7890"/>
 										</div>
 										</tr>
-										<!--<div class="field">
+										<div class="field">
 											<label for="message">Message</label>
 											<textarea name="message" id="message" rows="4"></textarea>
-										</div>-->
+										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Enviar Pedido" class="primary" /></li>
-										<!--<li><input type="reset" value="Reset" /></li>-->
+										<li><button name="submit" type="submit" value="Enviar Pedido" class="primary" /></li>
+										<li><button name="reset" type="reset" value="Borrar" /></li>
 									</ul>
 								
 								
@@ -147,6 +142,19 @@
 									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>-->
+
+
+								<script>
+											const scriptURL = 'https://script.google.com/macros/s/AKfycbyvtpSuwBCxsiF8dO_dL-RwtVbv9S6PeYnuVrRWnbF4qmBdyq9YI4l-xVfcSADA-wyfdg/exec'
+											const form = document.forms['google-sheet']
+			
+											form.addEventListener ('submit', e => {
+												e.preventDefault()
+												fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+													.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
+													.catch(error => console.error('Error!', error.message))
+											})
+								</script>
 
 							</article>
 
