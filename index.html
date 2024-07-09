@@ -137,17 +137,7 @@
 									</form>
 								</div>-->
 						
-								<script>
-									const scriptURL = 'https://script.google.com/macros/s/AKfycbxqYntiTSTgA2Cq9vCjgvMeVY19URGAZxCWPtPCeESNVwbBKVYHjpRYB4wYnkvrqibIIA/exec'
-									const form = document.forms['google-sheet']
-	
-									form.addEventListener ('submit', e => {
-										e.preventDefault()
-										fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-											.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
-											.catch(error => console.error('Error!', error.message))
-									})
-								</script>
+								
 							
 							
 
@@ -394,7 +384,19 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							</article>
 
 					</div>
+					
+					<script>
+						const scriptURL = 'https://script.google.com/macros/s/AKfycbxqYntiTSTgA2Cq9vCjgvMeVY19URGAZxCWPtPCeESNVwbBKVYHjpRYB4wYnkvrqibIIA/exec'
+						const form = document.forms['google-sheet']
 
+						form.addEventListener ('submit', e => {
+							e.preventDefault()
+							fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+								.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
+								.catch(error => console.error('Error!', error.message))
+						})
+					</script>
+					
 				<!-- Footer -->
 					<footer id="footer">
 						<p class="copyright">Pan de la Sierra 2024. Design by: <a href="https://html5up.net">HTML5 UP</a>.</p>
