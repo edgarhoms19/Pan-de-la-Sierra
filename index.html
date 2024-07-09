@@ -65,52 +65,10 @@
 								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
 							</article> 
 
-						<!-- Contact -->
+						<!-- Contact 
 							 <article id="orders">
 								<h2 class="major">Comienza tu orden</h2>
 								<form method="post" action="#" autocomplete="off" name="google-sheet">
-									
-										<h3 class="major">Table</h3>
-										<h4>Default</h4>
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-
-											</table>
-										</div>
 
 									<div class="fields">
 										<div class="field half">
@@ -120,7 +78,7 @@
 										<tr>
 										<div class="field half">
 											<label for="phone">Numero de Telefono</label>
-											<input type="tel" name="phone" id="phone" placeholder="123-456-7890"/>
+											<input type="tel" name="tel" id="tel" placeholder="123-456-7890"/>
 										</div>
 										</tr>
 										<div class="field">
@@ -132,10 +90,9 @@
 										<li><input name="submit" type="submit" value="Enviar Pedido" class="primary" /></li>
 										<li><input name="reset" type="reset" value="Borrar" /></li>
 									</ul>
-								
-								
-								</form>
-								<!-- Commented the Social Media Icons
+									</form>-->
+
+									<!-- Commented the Social Media Icons
 								<ul class="icons">
 									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -143,19 +100,33 @@
 									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>-->
 
+								<div class="container">
+									<form method="post" action="#" autocomplete="off" name="google-sheet">
+										<h3><center>Ingresa tu Orden</center></h3>
+										<input type="text" placeholder="Nombre Completo" name="name">
+										<input type="text" placeholder="123-456-7890" name="phone">
+										<textarea rows="4" placeholder="Agrega tu mensaje" name="message"></textarea>
+										<button type="submit" name="submit">Enviar Orden</button>
+										<button type="reset" class="reset">Borrar</button>
+									</form>
+								</div>
+						
+								
+								
 
-								<script>
-											const scriptURL = 'https://script.google.com/macros/s/AKfycbyvtpSuwBCxsiF8dO_dL-RwtVbv9S6PeYnuVrRWnbF4qmBdyq9YI4l-xVfcSADA-wyfdg/exec'
-											const form = document.forms['google-sheet']
-			
-											form.addEventListener ('submit', e => {
-												e.preventDefault()
-												fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-													.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
-													.catch(error => console.error('Error!', error.message))
-											})
+						
+						<script>
+									const scriptURL = 'https://script.google.com/macros/s/AKfycbyvtpSuwBCxsiF8dO_dL-RwtVbv9S6PeYnuVrRWnbF4qmBdyq9YI4l-xVfcSADA-wyfdg/exec'
+									const form = document.forms['google-sheet']
+	
+									form.addEventListener ('submit', e => {
+										e.preventDefault()
+										fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+											.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
+											.catch(error => console.error('Error!', error.message))
+									})
 								</script>
-
+							
 							</article>
 
 						<!-- Elements -->
