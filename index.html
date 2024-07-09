@@ -72,36 +72,36 @@
 
 									<div class="fields">
 										<div class="field half">
-											<label for="name">Nombre Completo</label>
-											<input type="text" name="name" id="name" value="" placeholder="Jane Doe"/>
+											<!--<label for="name">Nombre Completo</label>-->
+											<input type="text" name="name" id="name" value="" placeholder="Nombre Completo"/>
 										</div>
 										<tr>
 										<div class="field half">
-											<label for="phone">Numero de Telefono</label>
-											<input type="tel" name="tel" id="tel" placeholder="123-456-7890"/>
+											<!--<label for="phone">Numero de Telefono</label>-->
+											<input type="text" name="phone" id="phone" placeholder="123-456-7890"/>
 										</div>
 										</tr>
 										<div class="field">
-											<label for="message">Message</label>
+											<!--<label for="message">Message</label>-->
 											<textarea name="message" id="message" rows="4"></textarea>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input name="submit" type="submit" value="Enviar Pedido" class="primary" /></li>
-										<li><input name="reset" type="reset" value="Borrar" /></li>
+										<li><button type="submit" name="submit">Enviar Orden</button></li>
+										<li><button type="reset" class="reset">Borrar</button></li>
 									</ul>
 									</form>
 
-									<!-- Commented the Social Media Icons
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>-->
-								</article>
+										<!-- Commented the Social Media Icons
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									</ul>-->
+							</article>
 
-								<!--<article id="orders">
+								<!--<div id="orders">
 									<h2 class="major"><center>Ingresa tu Orden</center></h2>
 									
 									<form method="post" action="#" autocomplete="off" name="google-sheet">
@@ -113,9 +113,9 @@
 										<button type="reset" class="reset">Borrar</button>
 									
 									</form>
-								</article>-->
+								</div>-->
 						
-						<script>
+								<script>
 									const scriptURL = 'https://script.google.com/macros/s/AKfycbyvtpSuwBCxsiF8dO_dL-RwtVbv9S6PeYnuVrRWnbF4qmBdyq9YI4l-xVfcSADA-wyfdg/exec'
 									const form = document.forms['google-sheet']
 	
