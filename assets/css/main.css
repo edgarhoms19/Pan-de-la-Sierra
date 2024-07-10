@@ -1673,5 +1673,5 @@ input, select, textarea {
 		  }
 		  
 		  #header .logo img {
-			max-height: 50px; /* Set a maximum height for the logo */
+			max-height: 100px; /* Set a maximum height for the logo */
 		  }
