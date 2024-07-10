@@ -162,20 +162,39 @@
 										<button type="reset" class="reset">Borrar</button>
 									</form>
 								</div>
-						<script>
-							const scriptURL = 'https://script.google.com/macros/s/AKfycbz4APB8S-Tbkz-kVK04D5Bow5grToTaW2LizCfYLGcLYPUxb4Wcdi4zYpWo_CfKRIWgHg/exec' 
-							const form = document.forms['google-sheet']
-			
+								<div id="custom-modal" class="modal">
+									<div class="modal-content">
+									  <span class="close-button">&times;</span>
+									  <p>Gracias por tu Orden! Estaremos en contacto en un momento...</p>
+									</div>
+								  </div>
+							<script>
+								const scriptURL = 'https://script.google.com/macros/s/AKfycbz4APB8S-Tbkz-kVK04D5Bow5grToTaW2LizCfYLGcLYPUxb4Wcdi4zYpWo_CfKRIWgHg/exec' 
+								const form = document.forms['google-sheet']
+								const modal = document.getElementById("custom-modal");
+								const closeButton = document.getElementsByClassName("close-button")[0];
+									
 									form.addEventListener('submit', e => {
-										e.preventDefault()
-										fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-											.then(response => {
-												alert("Gracias por tu Orden! Estaremos en contacto en un momento...");
-												form.reset(); // Clear the form fields
-											})
-											.catch(error => console.error('Error!', error.message))
-									})
-						</script>
+									  e.preventDefault();
+									  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+										.then(response => {
+										  form.reset(); // Clear the form fields
+										  modal.style.display = "block"; // Show the modal
+										})
+										.catch(error => console.error('Error!', error.message));
+									});
+									
+									closeButton.onclick = function() {
+									  modal.style.display = "none"; // Hide the modal
+									}
+									
+									window.onclick = function(event) {
+									  if (event.target == modal) {
+										modal.style.display = "none"; // Hide the modal if clicked outside
+									  }
+									}
+							</script>
+									
 										<!-- Commented the Social Media Icons
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
