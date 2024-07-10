@@ -1234,6 +1234,7 @@ input, select, textarea {
 			}
 
 		}
+
 /* Header */
 
 #header {
@@ -1443,8 +1444,8 @@ body.is-preload #header .content .inner {
     }
 
     #header .logo {
-        width: 4.75rem;
-        height: 4.75rem;
+        width: 2.75rem;
+        height: 2.75rem;
         line-height: 4.75rem;
     }
 
