@@ -1234,7 +1234,7 @@ input, select, textarea {
 			}
 
 		}
-
+		
 /* Header */
 
 #header {
@@ -1303,7 +1303,7 @@ input, select, textarea {
 /* Add styles to ensure the logo image fits well */
 #header .logo img {
     display: block;
-    max-width: 100%;
+    max-width: 50%;
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -1444,9 +1444,9 @@ body.is-preload #header .content .inner {
     }
 
     #header .logo {
-        width: 2.75rem;
-        height: 2.75rem;
-        line-height: 2.75rem;
+        width: 4.75rem;
+        height: 4.75rem;
+        line-height: 4.75rem;
     }
 
     #header .logo .icon:before {
