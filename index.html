@@ -114,6 +114,17 @@
 										<button type="reset" class="reset">Borrar</button>
 									</form>
 								</div>
+					<script>
+						const scriptURL = 'https://script.google.com/macros/s/AKfycbxqYntiTSTgA2Cq9vCjgvMeVY19URGAZxCWPtPCeESNVwbBKVYHjpRYB4wYnkvrqibIIA/exec'
+						const form = document.forms['google-sheet']
+
+						form.addEventListener ('submit', e => {
+							e.preventDefault()
+							fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+								.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
+								.catch(error => console.error('Error!', error.message))
+						})
+					</script>
 										<!-- Commented the Social Media Icons
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -140,17 +151,7 @@
 
 					</div>
 
-					<script>
-						const scriptURL = 'https://script.google.com/macros/s/AKfycbxqYntiTSTgA2Cq9vCjgvMeVY19URGAZxCWPtPCeESNVwbBKVYHjpRYB4wYnkvrqibIIA/exec'
-						const form = document.forms['google-sheet']
-
-						form.addEventListener ('submit', e => {
-							e.preventDefault()
-							fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-								.then(response => alert("Gracias por tu Orden! Estaremos en contacto en un momento..."))
-								.catch(error => console.error('Error!', error.message))
-						})
-					</script>
+					
 
 				<!-- Footer -->
 					<footer id="footer">
