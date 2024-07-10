@@ -1661,9 +1661,9 @@ input, select, textarea {
 		}
 
 		#logo-image {
-			height: auto; /* Maintain aspect ratio */
+			height: 100px; /* Maintain aspect ratio */
 			max-height: 50px; /* Adjust based on your previous logo size */
-			width: auto; /* Maintain aspect ratio */
+			width: 100px; /* Maintain aspect ratio */
 		  }
 		  
 		  /* Adjust header styles if necessary */
