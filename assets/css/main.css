@@ -1121,8 +1121,13 @@ input, select, textarea {
 
 		.language-switcher{
 			text-align: center;
-			background-color: #ffffff;
 		}
+
+		.language-switcher button {
+			margin: 0 1px; /* Add space between buttons */
+			padding: 10px 20px; /* Ensure consistent padding for both buttons */
+			vertical-align: middle; /* Ensure both buttons are aligned vertically */
+			}
 
 /* BG */
 
