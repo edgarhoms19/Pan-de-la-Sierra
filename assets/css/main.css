@@ -1113,10 +1113,9 @@ input, select, textarea {
 		padding: 10px 20px; /* Ensure consistent padding for both buttons */
 		vertical-align: middle; /* Ensure both buttons are aligned vertically */
 		}
-	
-		.reset {
-		border: 2px solid red;
-		color: red;
+
+		.payment-container {
+			text-align: center;
 		}
 
 /* BG */
