@@ -1119,6 +1119,11 @@ input, select, textarea {
 		color: red;
 		}
 
+		.language-switcher{
+			text-align: center;
+			background-color: #ffffff;
+		}
+
 /* BG */
 
 	#bg {
