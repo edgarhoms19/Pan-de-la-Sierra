@@ -154,7 +154,7 @@
                         e.preventDefault();
                         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                             .then(response => {
-                                alert("¡Gracias por tu Orden! Estaremos en contacto en cuanto este lista tu orden");
+                                alert("¡Gracias por tu Orden! En unos momentos confirmaremos tu orden | Thank you for your order! In a few moments, we will confirm your order");
                                 form.reset(); // Clear the form fields
                             })
                             .catch(error => console.error('Error!', error.message));
