@@ -47,7 +47,7 @@
                         <h4 data-translate="order-note">**Estas ordenes se entregaran el dia Sabado 13 de Julio</h4>
                         <label for="name" data-translate="name-label">Nombre Completo para la Orden:</label>
                         <input type="text" name="name" id="name" value="" placeholder="Nombre Completo" required/><br>
-                        <label for="phone" data-translate="phone-label">Numero de Telefono:</label>
+                        <label for="phone" data-translate="phone-label">Numero de Telefono: (Requerido para la confirmacion del pedido)</label>
                         <input type="text" name="phone" id="phone" placeholder="123-456-7890" required/><br>
 
                         <h3 data-translate="choose-breads">Elegir Panes ($2.00 cada pan)</h3> 
@@ -146,20 +146,52 @@
                         </div>
                     </form>
                 </div>
+
                 <script>
                     const scriptURL = 'https://script.google.com/macros/s/AKfycbz4APB8S-Tbkz-kVK04D5Bow5grToTaW2LizCfYLGcLYPUxb4Wcdi4zYpWo_CfKRIWgHg/exec';
                     const form = document.forms['google-sheet'];
-    
+
                     form.addEventListener('submit', e => {
                         e.preventDefault();
                         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                             .then(response => {
-                                alert("¡Gracias por tu Orden! En unos momentos confirmaremos tu orden | Thank you for your order! In a few moments, we will confirm your order");
+                                const language = getLanguage();
+                                if (language === 'es') {
+                                    alert("¡Gracias por tu Orden! En unos momentos confirmaremos tu orden");
+                                } else {
+                                    alert("Thank you for your order! In a few moments, we will confirm your order");
+                                }
                                 form.reset(); // Clear the form fields
                             })
                             .catch(error => console.error('Error!', error.message));
                     });
+
+                    // Function to set the language
+                    function setLanguage(lang) {
+                        localStorage.setItem('language', lang);
+                        switchLanguage(lang);
+                    }
+
+                    // Function to get the selected language
+                    function getLanguage() {
+                        return localStorage.getItem('language') || 'es'; // default to 'es' if not set
+                    }
+
+                    // Function to switch language and update text
+                    function switchLanguage(language) {
+                        document.querySelectorAll('[data-translate]').forEach(element => {
+                            const key = element.getAttribute('data-translate');
+                            element.innerText = translations[language][key];
+                        });
+                    }
+
+                    // Set default language to Spanish on page load
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const language = getLanguage();
+                        switchLanguage(language);
+                    });
                 </script>
+
                 <!-- Commented the Social Media Icons
                     <ul class="icons">
                         <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
@@ -201,7 +233,7 @@
                 "order-title": "Comienza tu orden",
                 "order-note": "**Estas ordenes se entregaran el dia Sabado 13 de Julio",
                 "name-label": "Nombre Completo para la Orden:",
-                "phone-label": "Numero de Telefono:",
+                "phone-label": "Numero de Telefono: (Requerido para la confirmacion del pedido)",
                 "choose-breads": "Elegir Panes ($2.00 cada pan)",
                 bread1: "Pan Sencillo:",
                 bread2: "Pan Revolcado (Metido en azucar despues de hornear):",
@@ -221,7 +253,7 @@
                 "order-title": "Start Your Order",
                 "order-note": "**These orders will be delivered on Saturday, July 13th",
                 "name-label": "Full Name for Order:",
-                "phone-label": "Phone Number:",
+                "phone-label": "Phone Number: (Required for order confirmation)",
                 "choose-breads": "Choose Bread ($2.00 per bread)",
                 bread1: "Plain Bread:",
                 bread2: "Rolled Bread (Dipped in sugar before baking):",
@@ -234,6 +266,11 @@
             }
         };
 
+        document.addEventListener('DOMContentLoaded', () => {
+            const language = getLanguage();
+            switchLanguage(language);
+        });
+
         function switchLanguage(language) {
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
@@ -241,8 +278,21 @@
             });
         }
 
-        // Set default language to Spanish
-        switchLanguage('es');
+        function getLanguage() {
+            return localStorage.getItem('language') || 'es';
+        }
+
+        document.getElementById('language-switcher').addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                const language = event.target.innerText.toLowerCase() === 'english' ? 'en' : 'es';
+                setLanguage(language);
+            }
+        });
+
+        function setLanguage(lang) {
+            localStorage.setItem('language', lang);
+            switchLanguage(lang);
+        }
     </script>
 
     <!-- Countdown Timer Script -->
