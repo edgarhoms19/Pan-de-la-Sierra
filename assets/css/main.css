@@ -1020,7 +1020,7 @@ input, select, textarea {
 		display: inline-block;
 		font-size: 0.8rem;
 		font-weight: 300;
-		height: 2.75rem;
+		height: 3.75rem;
 		letter-spacing: 0.2rem;
 		line-height: 2.75rem;
 		outline: 0;
@@ -1103,6 +1103,21 @@ input, select, textarea {
 	button {
 		line-height: calc(2.75rem - 2px);
 	}
+
+	.button-container {
+		text-align: center;
+		}
+	
+		.button-container button {
+		margin: 0 10px; /* Add space between buttons */
+		padding: 10px 20px; /* Ensure consistent padding for both buttons */
+		vertical-align: middle; /* Ensure both buttons are aligned vertically */
+		}
+	
+		.reset {
+		border: 2px solid red;
+		color: red;
+		}
 
 /* BG */
 
