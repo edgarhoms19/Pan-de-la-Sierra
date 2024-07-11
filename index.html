@@ -1,149 +1,205 @@
 <!DOCTYPE HTML>
 <!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Dimension by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Pan de la Sierra</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Pan de la Sierra</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<img src="images/logo.png" alt="Pan de la Sierra Logo" id="logo-image" />
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Pan de la Sierra</h1>
-								<p>Haciendo pan del bueno.</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<!--<li><a href="#images">Fotos</a></li>-->
-								<!--<li><a href="#work">Pedido</a></li>-->
-								<!--<li><a href="#about">Acerca</a></li>-->
-								<li><a href="#orders">Pedidos</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-					</header>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <img src="images/logo.png" alt="Pan de la Sierra Logo" id="logo-image" />
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1 data-translate="title">Pan de la Sierra</h1>
+                    <p data-translate="slogan">Haciendo pan del bueno.</p>
+                    <h4 data-translate="ultimo_pedido">Proxima venta de pan es: Sabado 13 de Julio. Ultimo dia para pedidos: Viernes 12 de Julio 3:00pm</h4>
 
-				<!-- Main -->
-					<div id="main">
-							<article id="orders">
-								<h2 class="major">Comienza tu orden</h2>
-								<div class="form-container">
-									<form method="post" action="#" autocomplete="off" name="google-sheet">
-										
-										<h4>**Estas ordenes se entregaran el dia Sabado 13 de Julio</h4>
-										<label for="name">Nombre Completo para la Orden:</label>
-										<input type="text" name="name" id="name" value="" placeholder="Nombre Completo" required/><br>
-										<label for="phone">Numero de Telefono:</label>
-										<input type="text" name="phone" id="phone" placeholder="123-456-7890" required/><br>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#orders" data-translate="orders">Haz tu Pedido</a></li>
+                </ul>
+            </nav>
+            <!-- Language Switcher -->
+            <div id="language-switcher">
+                <button onclick="switchLanguage('es')">Español</button>
+                <button onclick="switchLanguage('en')">English</button>
+            </div>
+        </header>
 
-										<h3>Elegir Panes</h3>
-        
-											<label for="bread1">Pan sin Nada:</label>
-											<select name="bread1">
-												<option value="0">0</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select><br>
+        <!-- Main -->
+        <div id="main">
+            <article id="orders">
+                <h2 class="major" data-translate="order-title">Comienza tu orden</h2>
+                <div class="form-container">
+                    <form method="post" action="#" autocomplete="off" name="google-sheet">
+                        
+                        <h4 data-translate="order-note">**Estas ordenes se entregaran el dia Sabado 13 de Julio</h4>
+                        <label for="name" data-translate="name-label">Nombre Completo para la Orden:</label>
+                        <input type="text" name="name" id="name" value="" placeholder="Nombre Completo" required/><br>
+                        <label for="phone" data-translate="phone-label">Numero de Telefono:</label>
+                        <input type="text" name="phone" id="phone" placeholder="123-456-7890" required/><br>
 
-											<label for="bread2">Pan Revolcado:</label>
-											<select name="bread2">
-												<option value="0">0</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select><br>
+                        <h3 data-translate="choose-breads">Elegir Panes</h3>
 
-											<label for="bread3">Pan Azucarado:</label>
-											<select name="bread3">
-												<option value="0">0</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select><br>
+                            <label for="bread1" data-translate="bread1">Pan Sencillo:</label>
+                            <select name="bread1">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select><br>
 
-											<label for="bread4">Pan con Barniz:</label>
-											<select name="bread4">
-												<option value="0">0</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select><br>
-											
-											<label for="message">Instrucciones Especiales:</label>
-											<textarea name="message" id="message" rows="4"></textarea><br>
+                            <label for="bread2" data-translate="bread2">Pan Revolcado:</label>
+                            <select name="bread2">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select><br>
 
-										<!--Buttons-->
-										<button type="submit" name="submit">Enviar Orden</button>
-										<button type="reset" class="reset">Borrar Orden</button>
-									</form>
-								</div>
-						<script>
-							const scriptURL = 'https://script.google.com/macros/s/AKfycbz4APB8S-Tbkz-kVK04D5Bow5grToTaW2LizCfYLGcLYPUxb4Wcdi4zYpWo_CfKRIWgHg/exec' 
-							const form = document.forms['google-sheet']
-			
-									form.addEventListener('submit', e => {
-										e.preventDefault()
-										fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-											.then(response => {
-												alert("¡Gracias por tu Orden! Estaremos en contacto en cuanto este lista tu orden");
-												form.reset(); // Clear the form fields
-											})
-											.catch(error => console.error('Error!', error.message))
-									})
-						</script>
-										<!-- Commented the Social Media Icons
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-									</ul>-->
+                            <label for="bread3" data-translate="bread3">Pan Azucarado:</label>
+                            <select name="bread3">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select><br>
 
-							</article>
+                            <label for="bread4" data-translate="bread4">Pan con Barniz:</label>
+                            <select name="bread4">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select><br>
+                            
+                            <label for="message" data-translate="special-instructions">Instrucciones Especiales:</label>
+                            <textarea name="message" id="message" rows="4"></textarea><br>
 
-					</div>
+                        <!--Buttons-->
+                        <button type="submit" name="submit" data-translate="submit">Enviar Orden</button>
+                        <button type="reset" class="reset" data-translate="reset">Borrar Orden</button>
+                    </form>
+                </div>
+                <script>
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbz4APB8S-Tbkz-kVK04D5Bow5grToTaW2LizCfYLGcLYPUxb4Wcdi4zYpWo_CfKRIWgHg/exec' 
+                    const form = document.forms['google-sheet']
+    
+                            form.addEventListener('submit', e => {
+                                e.preventDefault()
+                                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                                    .then(response => {
+                                        alert("¡Gracias por tu Orden! Estaremos en contacto en cuanto este lista tu orden");
+                                        form.reset(); // Clear the form fields
+                                    })
+                                    .catch(error => console.error('Error!', error.message))
+                            })
+                </script>
+                        <!-- Commented the Social Media Icons
+                    <ul class="icons">
+                        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>-->
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">Pan de la Sierra 2024. Design by: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+            </article>
 
-			</div>
+        </div>
 
-		<!-- BG -->
-			<div id="bg"></div>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">Pan de la Sierra 2024. Design by: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    </div>
 
-	</body>
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Translation Script -->
+    <script>
+        const translations = {
+            es: {
+                title: "Pan de la Sierra",
+                slogan: "Haciendo pan del bueno.",
+                ultimo_pedido: "Proxima venta de pan es: Sabado 13 de Julio. Ultimo dia para pedidos: Viernes 12 de Julio 3:00pm",
+                orders: "Haz tu Pedido",
+                "order-title": "Comienza tu orden",
+                "order-note": "**Estas ordenes se entregaran el dia Sabado 13 de Julio",
+                "name-label": "Nombre Completo para la Orden:",
+                "phone-label": "Numero de Telefono:",
+                "choose-breads": "Elegir Panes",
+                bread1: "Pan Sencillo:",
+                bread2: "Pan Revolcado:",
+                bread3: "Pan Azucarado:",
+                bread4: "Pan con Barniz:",
+                "special-instructions": "Instrucciones Especiales:",
+                submit: "Enviar Orden",
+                reset: "Borrar Orden"
+            },
+            en: {
+                title: "Pan de la Sierra",
+                slogan: "Making that good bread.",
+                ultimo_pedido: "Next bread sale is: Saturday July 13th. Last day for orders: Friday, July 12, 3:00pm",
+                orders: "Make an Order",
+                "order-title": "Start Your Order",
+                "order-note": "**These orders will be delivered on Saturday, July 13th",
+                "name-label": "Full Name for Order:",
+                "phone-label": "Phone Number:",
+                "choose-breads": "Choose Breads",
+                bread1: "Plain Bread:",
+                bread2: "Rolled Bread:",
+                bread3: "Sugared Bread:",
+                bread4: "Glazed Bread:",
+                "special-instructions": "Special Instructions:",
+                submit: "Submit Order",
+                reset: "Reset Order"
+            }
+        };
+
+        function switchLanguage(language) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.innerText = translations[language][key];
+            });
+        }
+
+        // Set default language to Spanish
+        switchLanguage('es');
+    </script>
+
+</body>
 </html>
+
