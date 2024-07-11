@@ -1119,18 +1119,6 @@ input, select, textarea {
 		color: red;
 		}
 
-		.language-switcher{
-			text-align: center;
-		}
-
-		.language-switcher button {
-			margin: 0 1px; /* Add space between buttons */
-			padding: 10px 20px; /* Ensure consistent padding for both buttons */
-			vertical-align: middle; /* Ensure both buttons are aligned vertically */
-			background-color: white;
-			text-emphasis-color: black;
-			}
-
 /* BG */
 
 	#bg {
