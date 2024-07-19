@@ -21,13 +21,13 @@
                 <div class="inner">
                     <h1 data-translate="title">Pan de la Sierra</h1>
                     <p data-translate="slogan">Haciendo pan del bueno</p>
-                    <h4 data-translate="ultimo_pedido">Proxima venta de pan es: Sabado 13 de Julio. Ultimo dia para pedidos: Viernes 12 de Julio 4:00pm</h4>
+                    <h4 data-translate="ultimo_pedido">Próxima venta de pan: Sábado 13 de Julio. Último día para pedidos: Viernes 12 de Julio a las 3:00 p.m.</h4>
                     <h4 data-translate="restante">Tiempo restante para tomar pedidos: </h4><h3 id="countdown-timer"></h3>
                 </div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#orders" data-translate="orders">Haz tu Pedido</a></li>
+                    <li><a href="#orders" data-translate="orders" onclick="accessForm()">Haz tu Pedido</a></li>
                 </ul>
             </nav>
             <!-- Language Switcher -->
@@ -44,13 +44,13 @@
                 <div class="form-container">
                     <form method="post" action="#" autocomplete="off" name="google-sheet">
                         
-                        <h4 data-translate="order-note">**Estas ordenes se entregaran el dia Sabado 13 de Julio</h4>
-                        <label for="name" data-translate="name-label">Nombre Completo para la Orden:</label>
-                        <input type="text" name="name" id="name" value="" placeholder="Nombre Completo" required/><br>
-                        <label for="phone" data-translate="phone-label">Numero de Telefono: (Requerido para la confirmacion del pedido)</label>
+                        <h4 data-translate="order-note">**Estas órdenes se entregarán el Sábado 13 de Julio.</h4>
+                        <label for="name" data-translate="name-label">Nombre y apellido para la orden:</label>
+                        <input type="text" name="name" placeholder="Charles Spurgeon" required/><br>
+                        <label for="phone" data-translate="phone-label">Número de teléfono: (Requerido para la confirmación del pedido)</label>
                         <input type="text" name="phone" id="phone" placeholder="123-456-7890" required/><br>
 
-                        <h3 data-translate="choose-breads">Elegir Panes ($2.00 cada pan)</h3> 
+                        <h3 data-translate="choose-breads">Elegir panes ($2.00 cada pan)</h3> 
 
                         <label for="bread1" data-translate="bread1">Pan Sencillo:</label>
                         <select name="bread1">
@@ -72,7 +72,7 @@
                             <option value="15">15</option>
                         </select><br>
 
-                        <label for="bread2" data-translate="bread2">Pan Revolcado (metido en azucar despues de hornear):</label>
+                        <label for="bread2" data-translate="bread2">Pan Revolcado (metido en azúcar después de hornear):</label>
                         <select name="bread2">
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -92,7 +92,7 @@
                             <option value="15">15</option>
                         </select><br>
 
-                        <label for="bread3" data-translate="bread3">Pan Azucarado (azucar puesta antes de hornear):</label>
+                        <label for="bread3" data-translate="bread3">Pan Azucarado (Cubierto con azúcar antes de hornear):</label>
                         <select name="bread3">
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -137,7 +137,7 @@
 
                             <div class="payment-container">
                                 <h4 data-translate="payment">**Pago en efectivo o por Zelle**</h4>
-                                <a data-translate="Instructions1">**Una vez que Oprima el boton de "Enviar Orden", esperar unos segundo para recibir mensaje de confirmacion**</a><br><br>
+                                <a data-translate="Instructions1">**Una vez que oprima el botón de [Enviar Orden], espere unos segundos para recibir un mensaje de confirmación**</a><br><br>
                             </div>
                             
 
@@ -191,6 +191,23 @@
                         const language = getLanguage();
                         switchLanguage(language);
                     });
+
+                    // Access control for form
+                    function accessForm() {
+                        sessionStorage.setItem('formAccess', 'true');
+                    }
+
+                    function checkFormAccess() {
+                        if (sessionStorage.getItem('formAccess') !== 'true') {
+                            alert("You must click 'Haz tu Pedido' to access the form.");
+                            window.location.href = '#';
+                        }
+                        sessionStorage.removeItem('formAccess');
+                    }
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        checkFormAccess();
+                    });
                 </script>
 
                 <!-- Commented the Social Media Icons
@@ -228,33 +245,35 @@
             es: {
                 title: "Pan de la Sierra",
                 slogan: "Haciendo pan del bueno",
-                ultimo_pedido: "Proxima venta de pan es: Sabado 13 de Julio. Ultimo dia para pedidos: Viernes 12 de Julio 4:00pm",
+                ultimo_pedido: "Próxima venta de pan: Sábado 13 de Julio. Último día para pedidos: Viernes 12 de Julio a las 3:00 p.m.",
                 restante: "Tiempo restante para tomar pedidos: ",
                 orders: "Haz tu Pedido",
                 "order-title": "Comienza tu orden",
-                "order-note": "**Estas ordenes se entregaran el dia Sabado 13 de Julio",
-                "name-label": "Nombre Completo para la Orden:",
-                "phone-label": "Numero de Telefono: (Requerido para la confirmacion del pedido)",
-                "choose-breads": "Elegir Panes ($2.00 cada pan)",
+                "order-note": "**Estas órdenes se entregarán el Sábado 13 de Julio.",
+                "name-label": "Nombre y apellido para la Orden:",
+                "NameLastName": "Nombre y appelido",
+                "phone-label": "Número de teléfono: (Requerido para la confirmación del pedido)",
+                "choose-breads": "Elegir panes ($2.00 cada pan)",
                 bread1: "Pan Sencillo:",
-                bread2: "Pan Revolcado (Metido en azucar despues de hornear):",
+                bread2: "Pan Revolcado (Metido en azúcar después de hornear):",
                 bread3: "Pan Azucarado (Cubierto con azúcar antes de hornear):",
                 bread4: "Pan con Barniz (Concha):",
                 "special-instructions": "Instrucciones Especiales:",
                 payment:"Pago en efectivo o por Zelle",
-                Instructions1: "**Una vez que Oprima el boton de -Enviar Orden-, esperar unos segundo para recibir mensaje de confirmacion**",
+                Instructions1: "**Una vez que oprima el botón de [Enviar Orden], espere unos segundos para recibir un mensaje de confirmación**",
                 submit: "Enviar Orden",
                 reset: "Borrar Orden"
             },
             en: {
                 title: "Pan de la Sierra",
                 slogan: "Making that good bread",
-                ultimo_pedido: "Next bread sale is: Saturday July 13th. Last day for orders: Friday, July 12, 4:00pm",
+                ultimo_pedido: "Next bread sale is: Saturday July 13th. Last day for orders: Friday, July 12, 3:00pm",
                 restante: "Remaining time to take orders: ",
                 orders: "Make an Order",
                 "order-title": "Start Your Order",
                 "order-note": "**These orders will be delivered on Saturday, July 13th",
-                "name-label": "Full Name for Order:",
+                "name-label": "First and last name for Order:",
+                "NameLastName": "Name and last name",
                 "phone-label": "Phone Number: (Required for order confirmation)",
                 "choose-breads": "Choose Bread ($2.00 per bread)",
                 bread1: "Plain Bread:",
@@ -277,8 +296,11 @@
         function switchLanguage(language) {
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
-                element.innerText = translations[language][key];
-            });
+                if (translations[language][key]) {
+                    element.innerText = translations[language][key];
+                }
+        });
+            updateCountdownMessage();
         }
 
         function getLanguage() {
@@ -296,42 +318,39 @@
             localStorage.setItem('language', lang);
             switchLanguage(lang);
         }
-    </script>
 
-    <!-- Countdown Timer Script -->
-    <script>
-    // Set the date and time when the countdown should end
-    var countDownDate = new Date("July 12, 2024 16:00:00").getTime(); // Update to your actual end time
-
-    // Update the countdown every 1 second
-    var x = setInterval(function() {
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the countdown date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result in the element with id="countdown-timer"
-        document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-
-        // If the countdown is over, disable the orders link
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("countdown-timer").innerHTML = "| NO LONGER TAKING ORDERS | NO ESTAMOS TOMANDO ORDENES |";
-            document.querySelector('a[href="#orders"]').removeAttribute("href"); // Remove the href attribute
-            document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; // Disable clicking
-            document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
+        // Countdown Timer Script
+        function updateCountdownMessage() {
+            const language = getLanguage();
+            let message;
+            if (language === 'es') {
+                message = "| NO ESTAMOS TOMANDO ÓRDENES |";
+            } else {
+                message = "| NO LONGER TAKING ORDERS |";
+            }
+            document.getElementById("countdown-timer").innerHTML = message;
         }
-    }, 1000);
-</script>
+
+        var countDownDate = new Date("July 21, 2024 15:00:00").getTime(); // Update to your actual end time
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                updateCountdownMessage(); // Update message when countdown ends
+                document.querySelector('a[href="#orders"]').removeAttribute("href"); // Remove the href attribute
+                document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; // Disable clicking
+                document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
-
