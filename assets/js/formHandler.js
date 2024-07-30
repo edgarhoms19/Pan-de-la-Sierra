@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     form.addEventListener('submit', e => {
         e.preventDefault();
-        
+
+        // Get current language
+        const language = getLanguage();
+
         // Show loading message
         const loadingMessage = document.createElement('div');
         loadingMessage.id = 'loadingMessage';
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
         loadingMessage.style.justifyContent = 'center';
         loadingMessage.style.alignItems = 'center';
         loadingMessage.style.zIndex = '1000';
-        loadingMessage.innerHTML = '<h2>Loading...</h2>';
+        loadingMessage.innerHTML = `<h2>${translations[language].loading}</h2>`;
         document.body.appendChild(loadingMessage);
 
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
@@ -71,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "special-instructions": "Instrucciones Especiales:",
             payment:"Pago en efectivo",
             Instructions1: "**Una vez que oprima el botón de [Enviar Orden], espere unos segundos para recibir un mensaje de confirmación**",
+            loading: "Enviando Pedido...",
             submit: "Enviar Orden",
             reset: "Borrar Orden"
         },
@@ -93,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "special-instructions": "Special Instructions:",
             payment:"Payment in cash",
             Instructions1: "**Once you press the -Submit Order- button, wait a few seconds to receive a confirmation message**",
+            loading: "Sending Order...",
             submit: "Submit Order",
             reset: "Reset Order"
         }
