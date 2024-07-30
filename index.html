@@ -193,23 +193,6 @@
                         const language = getLanguage();
                         switchLanguage(language);
                     });
-
-                    // Access control for form
-                    function accessForm() {
-                        sessionStorage.setItem('formAccess', 'true');
-                    }
-
-                    function checkFormAccess() {
-                        if (sessionStorage.getItem('formAccess') !== 'true') {
-                            alert("You must click 'Haz tu Pedido' to access the form.");
-                            window.location.href = '#';
-                        }
-                        sessionStorage.removeItem('formAccess');
-                    }
-
-                    document.addEventListener('DOMContentLoaded', () => {
-                        checkFormAccess();
-                    });
                 </script>
 
                 <!-- Commented the Social Media Icons
