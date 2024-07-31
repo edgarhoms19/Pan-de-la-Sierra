@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Gracias - Pan de la Sierra</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const language = urlParams.get('lang') || 'es'; // Default to 'es' if not provided
+
+            const translations = {
+                es: {
+                    
+                    thankYou: "¡Gracias por tu orden!",
+                    orderReceived: "Tu pedido ha sido recibido y será confirmado",
+                    returnButton: "Regresar al Inicio"
+                },
+                en: {
+                    
+                    thankYou: "Thank you for your order!",
+                    orderReceived: "Your order has been received and will be confirmed",
+                    returnButton: "Return to Home"
+                }
+            };
+
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.innerText = translations[language][key];
+            });
+
+            document.getElementById('return-button').innerText = translations[language].returnButton;
+        });
+    </script>
+</head>
+<body class="is-preload">
+    <style>
+        body.is-preload {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .header .content {
+            text-align: center;
+            margin-top: 2rem; /* Add some margin to move the content a bit down from the top */
+        }
+
+        .header .inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <img src="images/logo.png" alt="Pan de la Sierra Logo" id="logo-image" />
+            </div>
+            <div class="content">
+                <div class="inner">
+                    
+                    <h2 data-translate="thankYou">¡Gracias por tu orden!</h2>
+                    <p data-translate="orderReceived">Tu pedido ha sido recibido y será confirmado en breve.</p>
+                    <button id="return-button" onclick="window.location.href='index.html'">Regresar al Inicio</button>
+                </div>
+            </div>
+        </header>
+
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
