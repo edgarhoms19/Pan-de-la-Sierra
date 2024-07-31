@@ -8,6 +8,30 @@ document.addEventListener("DOMContentLoaded", function() {
         // Get current language
         const language = getLanguage();
 
+        // Get form values
+        const name = form['name'].value.trim();
+        const phone = form['phone'].value.trim();
+        const bread1 = parseInt(form['bread1'].value, 10);
+        const bread2 = parseInt(form['bread2'].value, 10);
+        const bread3 = parseInt(form['bread3'].value, 10);
+        const bread4 = parseInt(form['bread4'].value, 10);
+
+        // Validate form values
+        if (!name) {
+            alert(translations[language].nameValidation);
+            return;
+        }
+
+        if (!/^\d{10}$/.test(phone)) {
+            alert(translations[language].phoneValidation);
+            return;
+        }
+
+        if (bread1 === 0 && bread2 === 0 && bread3 === 0 && bread4 === 0) {
+            alert(translations[language].breadValidation);
+            return;
+        }
+
         // Show loading message
         const loadingMessage = document.createElement('div');
         loadingMessage.id = 'loadingMessage';
@@ -32,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error('Error!', error.message);
-                alert('Something went wrong. Please try again.');
+                alert(translations[language].errorMessage);
                 document.body.removeChild(loadingMessage);
             });
     });
@@ -72,11 +96,15 @@ document.addEventListener("DOMContentLoaded", function() {
             bread3: "Pan Revolcado (Metido en azúcar después de hornear):",
             bread4: "Pan con Barniz (Concha):",
             "special-instructions": "Instrucciones Especiales:",
-            payment:"Pago en solo en efectivo",
+            payment:"Pago solo en efectivo",
             Instructions1: "**Una vez que oprima el botón de [Enviar Orden], espere unos segundos para recibir un mensaje de confirmación**",
             loading: "Enviando Pedido...",
             submit: "Enviar Orden",
-            reset: "Borrar Orden"
+            reset: "Borrar Orden",
+            nameValidation: "Por favor ingresa tu nombre y apellido.",
+            phoneValidation: "Por favor ingrese un número de teléfono válido de 10 dígitos.",
+            breadValidation: "Por favor seleccione al menos un pan para ordenar.",
+            errorMessage: "Algo salió mal. Por favor, inténtelo de nuevo."
         },
         en: {
             title: "Pan de la Sierra",
@@ -99,7 +127,11 @@ document.addEventListener("DOMContentLoaded", function() {
             Instructions1: "**Once you press the -Submit Order- button, wait a few seconds to receive a confirmation message**",
             loading: "Sending Order...",
             submit: "Submit Order",
-            reset: "Reset Order"
+            reset: "Reset Order",
+            nameValidation: "Please enter your full name.",
+            phoneValidation: "Please enter a valid 10-digit phone number.",
+            breadValidation: "Please select at least one bread to order.",
+            errorMessage: "Something went wrong. Please try again."
         }
     };
 
@@ -114,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
             setLanguage(language);
         }
     });
+
     // Countdown Timer Script
     function updateCountdownMessage() {
         const language = getLanguage();
