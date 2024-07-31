@@ -1677,29 +1677,3 @@ body.is-preload #header .content .inner {
 
 
 /* Settings for the thank you page */
-
-body.is-preload {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-#wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.header .content {
-    text-align: center;
-    margin-top: 2rem; /* Add some margin to move the content a bit down from the top */
-}
-
-.header .inner {
-    max-width: 600px;
-    margin: 0 auto;
-}

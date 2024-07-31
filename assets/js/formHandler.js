@@ -114,4 +114,36 @@ document.addEventListener("DOMContentLoaded", function() {
             setLanguage(language);
         }
     });
+    // Countdown Timer Script
+    function updateCountdownMessage() {
+        const language = getLanguage();
+        let message;
+        if (language === 'es') {
+            message = "| AL MOMENTO NO ESTAMOS TOMANDO ÓRDENES |";
+        } else {
+            message = "| AT THIS MOMENT WE ARE NO LONGER TAKING ORDERS |";
+        }
+        document.getElementById("countdown-timer").innerHTML = message;
+    }
+
+    var countDownDate = new Date("August 16, 2024 19:00:00").getTime(); // Update to your actual end time
+
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+            clearInterval(x);
+            updateCountdownMessage(); // Update message when countdown ends
+            document.querySelector('a[href="#orders"]').removeAttribute("href"); // Remove the href attribute
+            document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; // Disable clicking
+            document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
+        }
+    }, 1000);
 });
