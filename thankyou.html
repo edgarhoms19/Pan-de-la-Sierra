@@ -6,6 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const language = urlParams.get('lang') || 'es'; // Default to 'es' if not provided
+
+            const translations = {
+                es: {
+                    title: "Pan de la Sierra",
+                    slogan: "Haciendo pan del bueno",
+                    thankYou: "¡Gracias por tu orden!",
+                    orderReceived: "Tu pedido ha sido recibido y será confirmado en breve.",
+                    returnButton: "Regresar al Inicio"
+                },
+                en: {
+                    title: "Pan de la Sierra",
+                    slogan: "Making that good bread",
+                    thankYou: "Thank you for your order!",
+                    orderReceived: "Your order has been received and will be confirmed shortly.",
+                    returnButton: "Return to Home"
+                }
+            };
+
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.innerText = translations[language][key];
+            });
+
+            document.getElementById('return-button').innerText = translations[language].returnButton;
+        });
+    </script>
 </head>
 <body class="is-preload">
     <style>
@@ -34,22 +64,6 @@
             max-width: 600px;
             margin: 0 auto;
         }
-
-        .return-button {
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .return-button:hover {
-            background-color: #005bb5;
-        }
     </style>
 
     <!-- Wrapper -->
@@ -64,9 +78,9 @@
                 <div class="inner">
                     <h1 data-translate="title">Pan de la Sierra</h1>
                     <p data-translate="slogan">Haciendo pan del bueno</p>
-                    <h2>¡Gracias por tu orden!</h2>
-                    <p>Tu pedido ha sido recibido y será confirmado en breve.</p>
-                    <a href="index.html" class="return-button">Volver al Inicio</a>
+                    <h2 data-translate="thankYou">¡Gracias por tu orden!</h2>
+                    <p data-translate="orderReceived">Tu pedido ha sido recibido y será confirmado en breve.</p>
+                    <button id="return-button" onclick="window.location.href='index.html'">Regresar al Inicio</button>
                 </div>
             </div>
         </header>
@@ -82,7 +96,5 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/formHandler.js"></script>
-
 </body>
 </html>

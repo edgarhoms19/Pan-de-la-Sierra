@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
             .then(response => {
-                // Redirect to thank you page
-                window.location.href = 'thankyou.html';
+                // Redirect to thank you page with the selected language
+                window.location.href = `thankyou.html?lang=${language}`;
             })
             .catch(error => {
                 console.error('Error!', error.message);
