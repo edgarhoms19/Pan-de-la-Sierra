@@ -82,11 +82,11 @@ document.addEventListener("DOMContentLoaded", function() {
         es: {
             title: "Pan de la Sierra",
             slogan: "Haciendo pan del bueno",
-            ultimo_pedido: "Próxima venta de pan: Sábado 17 de Agosto. Último día para pedidos: Viernes 16 de Agosto a las 7:00 p.m.",
+            ultimo_pedido: "Próxima venta de pan: Sábado 28 de Septiembre. Último día para pedidos: Viernes 27 de Septiembre a las 6:00 p.m.",
             restante: "Tiempo restante para tomar pedidos: ",
             orders: "Haz tu Pedido",
             "order-title": "Comienza tu orden",
-            "order-note": "**Estas órdenes se entregarán el Sábado 17 de Agosto.",
+            "order-note": "**Estas órdenes se entregarán el Sábado 28 de Septiembre.",
             "name-label": "Nombre y apellido para la Orden:",
             "NameLastName": "Nombre y appelido",
             "phone-label": "Número de teléfono: (Requerido para la confirmación del pedido)",
@@ -109,11 +109,11 @@ document.addEventListener("DOMContentLoaded", function() {
         en: {
             title: "Pan de la Sierra",
             slogan: "Making that good bread",
-            ultimo_pedido: "Next bread sale is: Saturday August 17th. Last day for orders: Friday, August 16, 7:00pm",
+            ultimo_pedido: "Next bread sale is: Saturday September 28th. Last day for orders: Friday, September 27, 6:00pm",
             restante: "Remaining time to take orders: ",
             orders: "Make an Order",
             "order-title": "Start Your Order",
-            "order-note": "**These orders will be delivered on Saturday, August 17th",
+            "order-note": "**These orders will be delivered on Saturday, September 28th",
             "name-label": "First and last name for Order:",
             "NameLastName": "Name and last name",
             "phone-label": "Phone Number: (Required for order confirmation)",
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("countdown-timer").innerHTML = message;
     }
 
-    var countDownDate = new Date("August 16, 2024 19:00:00").getTime(); // Update to your actual end time
+    var countDownDate = new Date("September 28, 2024 19:00:00").getTime(); // Update to your actual end time
 
     var x = setInterval(function() {
         var now = new Date().getTime();
@@ -179,4 +179,57 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
         }
     }, 1000);
+});
+
+// Adding bread images
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("bread-image");
+    const closeBtn = modal.querySelector(".close");    
+    // const closeBtn = document.getElementsByClassName("close")[0];
+  
+    // Bread image URLs
+    const breadImages = {
+      bread1: "images/PanSencillo.png",
+      bread2: "images/PanAzucarado.png",
+      bread3: "images/PanRevolcado.png",
+      bread4: "images/PanConBarniz.png"
+    };
+
+    // Add click event listeners to all image buttons
+    document.querySelectorAll('.image-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent any default button behavior
+        const breadType = this.getAttribute('data-bread');
+        modalImg.src = breadImages[breadType];
+        modal.style.display = "block";
+        });
+    });
+
+    // Close the modal when clicking on the close button
+    if (closeBtn) { // Add this check
+        closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent event from bubbling up
+        modal.style.display = "none";
+        });
+    } else {
+        console.error("Close button not found");
+    }
+
+    // Close the modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+        modal.style.display = "none";
+        }
+    });
+
+    // Prevent clicks within the modal from closing it
+    modalImg.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    // Prevent the modal from affecting the underlying form
+    modal.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
 });

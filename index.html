@@ -21,7 +21,7 @@
                 <div class="inner">
                     <h1 data-translate="title">Pan de la Sierra</h1>
                     <p data-translate="slogan">Haciendo pan del bueno</p>
-                    <h4 data-translate="ultimo_pedido">Próxima venta de pan: Sábado 17 de Agosto. Último día para pedidos: Viernes 16 de Agosto a las 7:00 p.m.</h4>
+                    <h4 data-translate="ultimo_pedido">Próxima venta de pan: Sábado 28 de Septiembre. Último día para pedidos: Viernes 27 de Septiembre a las 6:00 p.m.</h4>
                     <h4 data-translate="restante">Tiempo restante para tomar pedidos: </h4><h3 id="countdown-timer"></h3>
                 </div>
             </div>
@@ -44,96 +44,127 @@
                 <div class="form-container">
                     <form method="post" action="#" autocomplete="off" name="google-sheet">
                         
-                        <h4 data-translate="order-note">**Estas órdenes se entregarán el Sabado 17 de Agosto.</h4>
+                        <h4 data-translate="order-note">**Estas órdenes se entregarán el Sabado 28 de Septiembre.</h4>
                         <label for="name" data-translate="name-label">Nombre y apellido para la orden:</label>
                         <input type="text" name="name" placeholder="Charles Spurgeon" required/><br>
                         <label for="phone" data-translate="phone-label">Número de teléfono: (Requerido para la confirmación del pedido)</label>
                         <input type="text" name="phone" id="phone" placeholder="1234567890" required/><br>
 
                         <h3 data-translate="choose-breads">Elegir panes ($2.00 cada pan)</h3> 
-
-                        <label for="bread1" data-translate="bread1">Pan Sencillo:</label>
-                        <select name="bread1">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                        </select><br>
+                        <div class="bread-selection">
+                            <h4>Pan Sencillo</h4>
+                            <div class="bread-controls">
+                            <div class="bread-info">
+                                <label for="bread1">Cantidad:</label>
+                                <select name="bread1" id="bread1">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <button type="button" class="image-button" data-bread="bread1">Ver Imagen</button>
+                          </div>
+                        </div>
                         
-                        <label for="bread2" data-translate="bread2">Pan Azucarado (Cubierto con azúcar antes de hornear):</label>
-                        <select name="bread2">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                        </select><br>
+                        <div class="bread-selection">
+                            <h4>Pan Azucarado</h4>
+                            <p class="bread-description">Cubierto con azúcar antes de hornear</p>
+                            <div class="bread-controls">
+                                <div class="bread-info">
+                                    <label for="bread2">Cantidad:</label>
+                                    <select name="bread2" id="bread2">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <button type="button" class="image-button" data-bread="bread2">Ver Imagen</button>
+                        </div>
+                    </div>
 
-                        <label for="bread3" data-translate="bread3">Pan Revolcado (metido en azúcar después de hornear):</label>
-                        <select name="bread3">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                        </select><br>
+                    <div class="bread-selection">
+                        <h4>Pan Revolcado</h4>
+                        <p class="bread-description">Metido en azúcar después de hornear</p>
+                        <div class="bread-controls">
+                            <div class="bread-info">
+                                <label for="bread3">Cantidad:</label>
+                                <select name="bread3" id="bread3">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <button type="button" class="image-button" data-bread="bread3">Ver Imagen</button>
+                        </div>
+                    </div>
 
 
-
-                        <label for="bread4" data-translate="bread4">Pan con Barniz (Concha):</label>
-                        <select name="bread4">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                        </select><br>
-                            
+                        <div class="bread-selection">
+                            <h4>Pan con Barniz (Concha)</h4>
+                            <div class="bread-controls">
+                              <div class="bread-info">
+                                <label for="bread4">Cantidad:</label>
+                                <select name="bread4" id="bread4">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <button type="button" class="image-button" data-bread="bread4">Ver Imagen</button>
+                          </div>
+                        </div>                         
                             <label for="message" data-translate="special-instructions">Instrucciones Especiales:</label>
                             <textarea name="message" id="message" rows="4"></textarea><br>
 
@@ -151,7 +182,14 @@
             </article>
 
         </div>
-        
+
+        <div id="image-modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <img id="bread-image" src="" alt="Bread Image">
+            </div>
+          </div>
+
         <!-- Footer -->
         <footer id="footer">
             <p class="copyright">Pan de la Sierra 2024.</p>
@@ -169,6 +207,6 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/formHandler.js"></script>
-
+    
 </body>
 </html>
