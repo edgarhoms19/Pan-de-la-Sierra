@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("countdown-timer").innerHTML = message;
     }
 
-    var countDownDate = new Date("September 28, 2024 19:00:00").getTime(); // Update to your actual end time
+    var countDownDate = new Date("September 27, 2024 18:00:00").getTime(); // Update to your actual end time
 
     var x = setInterval(function() {
         var now = new Date().getTime();
