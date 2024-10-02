@@ -5,10 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener('submit', e => {
         e.preventDefault();
 
-        // Get current language
         const language = getLanguage();
 
-        // Get form values
         const name = form['name'].value.trim();
         const phone = form['phone'].value.trim();
         const bread1 = parseInt(form['bread1'].value, 10);
@@ -16,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const bread3 = parseInt(form['bread3'].value, 10);
         const bread4 = parseInt(form['bread4'].value, 10);
 
-        // Validate form values
         if (!name) {
             alert(translations[language].nameValidation);
             return;
@@ -32,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Show loading message
         const loadingMessage = document.createElement('div');
         loadingMessage.id = 'loadingMessage';
         loadingMessage.style.position = 'fixed';
@@ -51,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
             .then(response => {
-                // Redirect to thank you page with the selected language
                 window.location.href = `thankyou.html?lang=${language}`;
             })
             .catch(error => {
@@ -61,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     });
 
-    // Translation functions
     function setLanguage(lang) {
         localStorage.setItem('language', lang);
         switchLanguage(lang);
@@ -76,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const key = element.getAttribute('data-translate');
             element.innerText = translations[language][key];
         });
+        updateDates(language); // Update the formatted dates
     }
 
     const translations = {
@@ -154,43 +149,38 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event.target.tagName === 'BUTTON') {
             const language = event.target.innerText.toLowerCase() === 'english' ? 'en' : 'es';
             setLanguage(language);
+            switchLanguage(language);  
+            updateCountdownMessage();  
         }
     });
 
     // Countdown Timer Script
     var countDownDate = localStorage.getItem('countDownDate') 
         ? parseInt(localStorage.getItem('countDownDate')) 
-        : new Date("September 27, 2024 18:00:00").getTime(); // Default value
+        : new Date("September 27, 2024 18:00:00").getTime(); 
 
     var x = setInterval(function() {
         var now = new Date().getTime();
         var distance = countDownDate - now;
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-    // When the countdown is over
-    if (distance < 0) {
-        clearInterval(x);
-        updateCountdownMessage(); // Update message when countdown ends
-        document.querySelector('a[href="#orders"]').removeAttribute("href"); // Disable ordering
-        document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; // Disable clicking
-        document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
-    }
+        if (distance < 0) {
+            clearInterval(x);
+            updateCountdownMessage(); 
+            document.querySelector('a[href="#orders"]').removeAttribute("href"); 
+            document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; 
+            document.querySelector('a[href="#orders"]').style.color = 'gray'; 
+        }
     }, 1000);
 
-    // Function to get the language preference from localStorage
-    function getLanguage() {
-        return localStorage.getItem('language') || 'es'; // Default to Spanish ('es')
-    }
-
-    // Function to update the countdown message when the timer ends
     function updateCountdownMessage() {
-        const language = getLanguage(); // Read language from localStorage
+        const language = getLanguage();
         let message;
         if (language === 'es') {
             message = "| AL MOMENTO NO ESTAMOS TOMANDO ÓRDENES |";
@@ -200,67 +190,31 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("countdown-timer").innerHTML = message;
     }
 
-    // Call updateCountdownMessage when language is switched
-    document.getElementById('language-switcher').addEventListener('click', (event) => {
-        if (event.target.tagName === 'BUTTON') {
-            const language = event.target.innerText.toLowerCase() === 'english' ? 'en' : 'es';
-            setLanguage(language);
-            switchLanguage(language);  // Update the page language
-            updateCountdownMessage();  // Update the countdown message to reflect the new language
-        }
-});
+    // Fetch the stored dates from localStorage
+    const savedCountDownDate = localStorage.getItem('countDownDate');
+    const savedNextBreadSellDate = localStorage.getItem('nextBreadSellDate');
 
-});
-
-// Adding bread images
-document.addEventListener("DOMContentLoaded", function() {
-    const modal = document.getElementById("image-modal");
-    const modalImg = document.getElementById("bread-image");
-    const closeBtn = modal.querySelector(".close");    
-    // const closeBtn = document.getElementsByClassName("close")[0];
-  
-    // Bread image URLs
-    const breadImages = {
-      bread1: "images/PanSencillo.png",
-      bread2: "images/PanAzucarado.png",
-      bread3: "images/PanRevolcado.png",
-      bread4: "images/PanConBarniz.png"
-    };
-
-    // Add click event listeners to all image buttons
-    document.querySelectorAll('.image-button').forEach(button => {
-        button.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent any default button behavior
-        const breadType = this.getAttribute('data-bread');
-        modalImg.src = breadImages[breadType];
-        modal.style.display = "block";
-        });
-    });
-
-    // Close the modal when clicking on the close button
-    if (closeBtn) { // Add this check
-        closeBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent event from bubbling up
-        modal.style.display = "none";
-        });
-    } else {
-        console.error("Close button not found");
+    function formatDate(timestamp, locale) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        return new Date(parseInt(timestamp)).toLocaleDateString(locale, options); 
     }
 
-    // Close the modal when clicking outside the image
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-        modal.style.display = "none";
+    function updateDates(language) {
+        const locale = language === 'es' ? 'es-ES' : 'en-US';
+
+        if (savedNextBreadSellDate) {
+            document.getElementById('next-bread-sell').innerHTML = language === 'es'
+                ? `Próxima venta de pan: ${formatDate(savedNextBreadSellDate, locale)}`
+                : `Next bread sale is: ${formatDate(savedNextBreadSellDate, locale)}`;
         }
-    });
 
-    // Prevent clicks within the modal from closing it
-    modalImg.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
+        if (savedCountDownDate) {
+            document.getElementById('last-day-orders').innerHTML = language === 'es'
+                ? `Último día para pedidos: ${formatDate(savedCountDownDate, locale)}`
+                : `Last day for orders: ${formatDate(savedCountDownDate, locale)}`;
+        }
+    }
 
-    // Prevent the modal from affecting the underlying form
-    modal.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
+    // Initialize with the current language
+    updateDates(getLanguage());
 });
