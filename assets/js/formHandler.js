@@ -158,8 +158,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Countdown Timer Script
+    var countDownDate = localStorage.getItem('countDownDate') 
+        ? parseInt(localStorage.getItem('countDownDate')) 
+        : new Date("September 27, 2024 18:00:00").getTime(); // Default value
+
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    // When the countdown is over
+    if (distance < 0) {
+        clearInterval(x);
+        updateCountdownMessage(); // Update message when countdown ends
+        document.querySelector('a[href="#orders"]').removeAttribute("href"); // Disable ordering
+        document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; // Disable clicking
+        document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
+    }
+    }, 1000);
+
+    // Function to get the language preference from localStorage
+    function getLanguage() {
+        return localStorage.getItem('language') || 'es'; // Default to Spanish ('es')
+    }
+
+    // Function to update the countdown message when the timer ends
     function updateCountdownMessage() {
-        const language = getLanguage();
+        const language = getLanguage(); // Read language from localStorage
         let message;
         if (language === 'es') {
             message = "| AL MOMENTO NO ESTAMOS TOMANDO ÓRDENES |";
@@ -169,26 +200,16 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("countdown-timer").innerHTML = message;
     }
 
-    var countDownDate = new Date("September 27, 2024 18:00:00").getTime(); // Update to your actual end time
-
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-        if (distance < 0) {
-            clearInterval(x);
-            updateCountdownMessage(); // Update message when countdown ends
-            document.querySelector('a[href="#orders"]').removeAttribute("href"); // Remove the href attribute
-            document.querySelector('a[href="#orders"]').style.pointerEvents = 'none'; // Disable clicking
-            document.querySelector('a[href="#orders"]').style.color = 'gray'; // Optional: Change color to indicate disabled state
+    // Call updateCountdownMessage when language is switched
+    document.getElementById('language-switcher').addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON') {
+            const language = event.target.innerText.toLowerCase() === 'english' ? 'en' : 'es';
+            setLanguage(language);
+            switchLanguage(language);  // Update the page language
+            updateCountdownMessage();  // Update the countdown message to reflect the new language
         }
-    }, 1000);
+});
+
 });
 
 // Adding bread images

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Countdown</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/manage.css"> <!-- Link to your manage-specific CSS -->
+</head>
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Logo in the top left corner -->
+        <div class="logo">
+            <a href="admin.html">
+                <img src="images/logo.png" alt="Pan de la Sierra Logo">
+            </a>
+        </div>
+
+        <!-- Header -->
+        <header id="header">
+            <div class="content">
+                <div class="inner">
+                    <h1>Manage Countdown</h1>
+                    <p>Set the countdown date and time for the next bread order.</p>
+                </div>
+            </div>
+
+            <!-- Button to return to Admin Page -->
+            <div class="actions">
+                <a href="admin.html" class="button">Return to Admin</a>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+            <article id="manage">
+                <h2 class="major">Set Countdown Date</h2>
+                <form id="countdownForm">
+                    <label for="countdownDate">New Date and Time:</label>
+                    <input type="datetime-local" id="countdownDate" required>
+                    <div class="actions">
+                        <button type="submit" class="primary">Update</button>
+                    </div>
+                </form>
+            </article>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <a href="index.html">Go to Main Site</a>
+            <p class="copyright">Pan de la Sierra 2024.</p>
+        </footer>
+    </div>
+
+    <!-- External Script -->
+    <script src="assets/js/manageHandler.js"></script> <!-- Link to the external JS file -->
+</body>
+</html>
+
