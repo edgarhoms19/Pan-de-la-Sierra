@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const savedNextBreadSellDate = localStorage.getItem('nextBreadSellDate');
 
     function formatDate(timestamp, locale) {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12:true };
         return new Date(parseInt(timestamp)).toLocaleDateString(locale, options); 
     }
 
