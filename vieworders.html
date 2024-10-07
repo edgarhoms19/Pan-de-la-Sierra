@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <h1>Orders</h1>
+    <table id="orders-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Pan Sencillo</th>
+                <th>Pan Azucarado</th>
+                <th>Pan Revolcado</th>
+                <th>Pan con Barniz</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz4APB8S-Tbkz-kVK04D5Bow5grToTaW2LizCfYLGcLYPUxb4Wcdi4zYpWo_CfKRIWgHg/exec'; // Same script URL
+
+        // Fetch the data from the Google Sheets using the same Google Apps Script endpoint
+        fetch(scriptURL)
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector("#orders-table tbody");
+
+                data.forEach(order => {
+                    let row = document.createElement("tr");
+
+                    let nameCell = document.createElement("td");
+                    nameCell.textContent = order.name;
+                    row.appendChild(nameCell);
+
+                    let phoneCell = document.createElement("td");
+                    phoneCell.textContent = order.phone;
+                    row.appendChild(phoneCell);
+
+                    let bread1Cell = document.createElement("td");
+                    bread1Cell.textContent = order.bread1;
+                    row.appendChild(bread1Cell);
+
+                    let bread2Cell = document.createElement("td");
+                    bread2Cell.textContent = order.bread2;
+                    row.appendChild(bread2Cell);
+
+                    let bread3Cell = document.createElement("td");
+                    bread3Cell.textContent = order.bread3;
+                    row.appendChild(bread3Cell);
+
+                    let bread4Cell = document.createElement("td");
+                    bread4Cell.textContent = order.bread4;
+                    row.appendChild(bread4Cell);
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
