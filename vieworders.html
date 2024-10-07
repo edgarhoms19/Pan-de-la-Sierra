@@ -7,16 +7,21 @@
     <link rel="stylesheet" href="assets/css/vieworders.css">
 </head>
 <body>
+    <div class="actions">
+        <a href="admin.html" class="button">Return to Admin</a>
+    </div>
     <h1>Orders</h1>
     <table id="orders-table">
         <thead>
             <tr>
+                <th>Fecha de la Orden</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Pan Sencillo</th>
                 <th>Pan Azucarado</th>
                 <th>Pan Revolcado</th>
                 <th>Pan con Barniz</th>
+                <th>Message</th>
             </tr>
         </thead>
         <tbody>
@@ -29,41 +34,49 @@
 
         // Fetch the data from the Google Sheets using the same Google Apps Script endpoint
         fetch(scriptURL)
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.querySelector("#orders-table tbody");
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);  // Add this line to inspect the response
+        const tableBody = document.querySelector("#orders-table tbody");
+        data.forEach(order => {
+            let row = document.createElement("tr");
 
-                data.forEach(order => {
-                    let row = document.createElement("tr");
+            let TimeStampCell = document.createElement("td");
+            TimeStampCell.textContent = order.timestamp;
+            row.appendChild(TimeStampCell);
 
-                    let nameCell = document.createElement("td");
-                    nameCell.textContent = order.name;
-                    row.appendChild(nameCell);
+            let nameCell = document.createElement("td");
+            nameCell.textContent = order.name;
+            row.appendChild(nameCell);
 
-                    let phoneCell = document.createElement("td");
-                    phoneCell.textContent = order.phone;
-                    row.appendChild(phoneCell);
+            let phoneCell = document.createElement("td");
+            phoneCell.textContent = order.phone;
+            row.appendChild(phoneCell);
 
-                    let bread1Cell = document.createElement("td");
-                    bread1Cell.textContent = order.bread1;
-                    row.appendChild(bread1Cell);
+            let bread1Cell = document.createElement("td");
+            bread1Cell.textContent = order.bread1;
+            row.appendChild(bread1Cell);
 
-                    let bread2Cell = document.createElement("td");
-                    bread2Cell.textContent = order.bread2;
-                    row.appendChild(bread2Cell);
+            let bread2Cell = document.createElement("td");
+            bread2Cell.textContent = order.bread2;
+            row.appendChild(bread2Cell);
 
-                    let bread3Cell = document.createElement("td");
-                    bread3Cell.textContent = order.bread3;
-                    row.appendChild(bread3Cell);
+            let bread3Cell = document.createElement("td");
+            bread3Cell.textContent = order.bread3;
+            row.appendChild(bread3Cell);
 
-                    let bread4Cell = document.createElement("td");
-                    bread4Cell.textContent = order.bread4;
-                    row.appendChild(bread4Cell);
+            let bread4Cell = document.createElement("td");
+            bread4Cell.textContent = order.bread4;
+            row.appendChild(bread4Cell);
 
-                    tableBody.appendChild(row);
-                });
-            })
-            .catch(error => console.error('Error fetching data:', error));
+            let messageCell = document.createElement("td");
+            messageCell.textContent = order.message;
+            row.appendChild(messageCell);
+
+            tableBody.appendChild(row);
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
     </script>
 </body>
 </html>
